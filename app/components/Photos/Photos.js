@@ -12,7 +12,7 @@ const parallax = [20, -30, 80, 80, -10, 0, -10, 40];
 
 const photos = [
   {
-    img: '/images/photos/photo1.jpg',
+    img: '/images/photos/photo1.JPG',
     alt: 'Photo 1',
     width: 3629,
     height: 2433,
