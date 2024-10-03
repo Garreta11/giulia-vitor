@@ -11,7 +11,7 @@ export default function Home() {
       <Experience />
       <Hero />
       <Photos />
-      <PlaylistWebGL />
+      {/* <PlaylistWebGL /> */}
       <Information />
     </div>
   );
