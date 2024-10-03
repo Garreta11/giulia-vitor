@@ -1,13 +1,8 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import './_typography.scss';
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --white: #e8e8e8;
+  --black: #171717;
 }
 
 html,
@@ -17,9 +12,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
+  background: var(--black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -28,6 +22,11 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Fogtwo', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Humane', sans-serif;
 }
 
 a {
@@ -35,8 +34,40 @@ a {
   text-decoration: none;
 }
 
+button {
+  background: none;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  font-family: 'Humane', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--white);
+  font-size: 80px;
+  &:hover {
+    -webkit-text-stroke-width: 0px;
+    color: var(--white);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.section {
+  &:nth-child(even) {
+    background-color: var(--black);
+    color: var(--white);
+  }
+  &:nth-child(odd) {
+    background-color: var(--white);
+    color: var(--black);
+  }
+}
+
+.dg {
+  z-index: 300 !important;
 }

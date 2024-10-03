@@ -2,15 +2,15 @@
 const nextConfig = {
   reactStrictMode: false,
   webpack(config) {
-    config.resolve.fallback = {
-      // if you miss it, all the other options in fallback, specified
-      // by next.js will be dropped.
-      ...config.resolve.fallback,
-
-      fs: false, // the solution
-    };
+    config.module.rules.push({
+      test: /\.(glsl|vs|fs|vert|frag)$/,
+      use: ['raw-loader', 'glslify-loader'],
+    });
 
     return config;
+  },
+  images: {
+    remotePatterns: [{ hostname: 'i.scdn.co' }],
   },
 };
 
