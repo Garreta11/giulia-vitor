@@ -33,7 +33,7 @@ const PlaylistWebGL = () => {
   }, []);
 
   useEffect(() => {
-    if (playlist) {
+    if (typeof window !== 'undefined' && playlist) {
       const output = new Output({
         targetElement: canvasRef.current,
         audio: audioRef.current,

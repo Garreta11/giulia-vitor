@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import gsap from 'gsap';
@@ -8,19 +7,14 @@ import sources from '@/app/data/models';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GUI } from 'dat.gui';
 
-/* import studio from '@theatre/studio';
-import * as core from '@theatre/core'; */
-
-// studio.initialize();
-
 export default class Output {
   constructor(_options = {}) {
     // Basic setup
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    this.window = _options.window;
+    this.width = this.window.innerWidth;
+    this.height = this.window.innerHeight;
     this.targetElement = _options.targetElement;
     this.setLoading = _options.setLoading;
-    this.window = _options.window;
 
     this.settings = {
       radius: 1.4,
@@ -42,8 +36,6 @@ export default class Output {
       this.createModels();
       this.setupScrollTrigger();
       this.createGUI();
-
-      //this.createTheatre();
 
       this.render();
     });
@@ -217,33 +209,6 @@ export default class Output {
 
     ScrollTrigger.matchMedia({
       '(prefers-reduced-motion: no-preference)': this.desktopAnimation,
-    });
-  }
-
-  createTheatre() {
-    this.project = core.getProject('giulia-vitor-experience');
-
-    this.sheet = this.project.sheet('Animated Scene');
-
-    this.cameraObject = this.sheet.object('Camera', {
-      rotation: core.types.compound({
-        x: core.types.number(this.camera.rotation.x, { range: [-2, 2] }),
-        y: core.types.number(this.camera.rotation.y, { range: [-2, 2] }),
-        z: core.types.number(this.camera.rotation.z, { range: [-2, 2] }),
-      }),
-      position: core.types.compound({
-        x: core.types.number(this.camera.position.x, { range: [-2, 2] }),
-        y: core.types.number(this.camera.position.y, { range: [-2, 2] }),
-        z: core.types.number(this.camera.position.z, { range: [-2, 80] }),
-      }),
-    });
-    this.cameraObject.onValuesChange((values) => {
-      this.camera.rotation.x = values.rotation.x;
-      this.camera.rotation.y = values.rotation.y;
-      this.camera.rotation.z = values.rotation.z;
-      this.camera.position.x = values.position.x;
-      this.camera.position.y = values.position.y;
-      this.camera.position.z = values.position.z;
     });
   }
 
