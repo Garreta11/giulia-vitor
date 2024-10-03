@@ -37,6 +37,7 @@ const PlaylistWebGL = () => {
       const output = new Output({
         targetElement: canvasRef.current,
         audio: audioRef.current,
+        window: window,
       });
 
       outputRef.current = output;

@@ -20,6 +20,7 @@ export default class Output {
     this.height = window.innerHeight;
     this.targetElement = _options.targetElement;
     this.setLoading = _options.setLoading;
+    this.window = _options.window;
 
     this.settings = {
       radius: 1.4,
@@ -48,7 +49,7 @@ export default class Output {
     });
 
     // events
-    window.addEventListener('resize', this.onResize.bind(this));
+    this.window.addEventListener('resize', this.onResize.bind(this));
   }
 
   createGUI() {
@@ -74,8 +75,8 @@ export default class Output {
 
   createRenderer() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setPixelRatio(this.window.devicePixelRatio);
+    this.renderer.setSize(this.window.innerWidth, this.window.innerHeight);
     this.renderer.shadowMap.enabled = true;
     this.targetElement.appendChild(this.renderer.domElement);
   }
@@ -88,7 +89,7 @@ export default class Output {
   createCamera() {
     this.camera = new THREE.PerspectiveCamera(
       45,
-      window.innerWidth / window.innerHeight,
+      this.window.innerWidth / this.window.innerHeight,
       0.2,
       2000
     );
@@ -250,8 +251,8 @@ export default class Output {
    * EVENTS
    */
   onResize() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    this.width = this.window.innerWidth;
+    this.height = this.window.innerHeight;
     this.renderer.setSize(this.width, this.height);
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();

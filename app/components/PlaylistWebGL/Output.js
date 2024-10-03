@@ -7,6 +7,7 @@ export default class Output {
     this.targetElement = _options.targetElement;
     this.width = this.targetElement.clientWidth;
     this.height = this.targetElement.clientHeight;
+    this.window = _options.window;
 
     this.audio = _options.audio;
 
@@ -14,7 +15,7 @@ export default class Output {
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
     });
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setPixelRatio(this.window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
     this.renderer.setClearColor(0x080808, 0);
 
@@ -53,8 +54,8 @@ export default class Output {
   }
 
   onMouseMove(event) {
-    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    this.mouse.x = (event.clientX / this.window.innerWidth) * 2 - 1;
+    this.mouse.y = -(event.clientY / this.window.innerHeight) * 2 + 1;
 
     //console.log(this.mouse);
   }

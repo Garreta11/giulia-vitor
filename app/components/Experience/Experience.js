@@ -10,10 +10,14 @@ const Experience = () => {
   const outputRef = useRef(null);
 
   useEffect(() => {
-    outputRef.current = new Output({
-      targetElement: containerRef.current,
-      setLoading,
-    });
+    if (typeof window !== 'undefined') {
+      // Code that uses window here
+      outputRef.current = new Output({
+        targetElement: containerRef.current,
+        setLoading,
+        window: window,
+      });
+    }
   }, []);
 
   return (
