@@ -106,7 +106,7 @@ const PlaylistWebGL = () => {
         });
 
         //wrap.style.transform = `translate(${-position * 50 + 25}px, 0)`;
-        window.requestAnimationFrame(raf);
+        requestAnimationFrame(raf);
       }
 
       raf();

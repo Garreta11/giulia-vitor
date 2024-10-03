@@ -41,6 +41,7 @@ const Footer = () => {
             {links.map((link) => (
               <Link
                 href={link.href}
+                key={link.href}
                 className={styles.footer__links__item}
                 onClick={(e) => handleClick(e, link.href)}
               >
