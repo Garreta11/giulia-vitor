@@ -5,7 +5,7 @@ import Hero from './components/Hero/Hero';
 import Photos from './components/Photos/Photos';
 import styles from './page.module.scss';
 
-export default function Home() {
+const Home = () => {
   return (
     <div className={`${styles.page} page`}>
       <Experience />
@@ -15,4 +15,6 @@ export default function Home() {
       <Information />
     </div>
   );
-}
+};
+
+export default Home;
