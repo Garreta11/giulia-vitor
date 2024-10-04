@@ -1,3 +1,5 @@
+@import '../../_breakpoints.scss';
+
 .footer {
   height: 400px;
   position: relative;
@@ -18,12 +20,19 @@
     justify-content: space-between;
     background-color: var(--white);
     color: var(--black);
+    @include mobile-query {
+      padding: 20px;
+    }
   }
 
   &__title {
     font-size: 80px;
     line-height: 0.75;
     text-transform: uppercase;
+    @include mobile-query {
+      font-size: 50px;
+    }
+
   }
 
   &__date {
@@ -46,6 +55,10 @@
 
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: var(--black);
+
+      @include mobile-query {
+        font-size: 50px;
+      }
 
       &:hover {
         -webkit-text-stroke-width: 0px;

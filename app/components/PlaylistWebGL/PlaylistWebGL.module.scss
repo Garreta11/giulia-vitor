@@ -1,3 +1,4 @@
+@import '../../_breakpoints.scss';
 .playlist {
   position: relative;
   height: 100vh;
@@ -5,29 +6,47 @@
   padding: 100px;
   text-align: center;
 
+  @include mobile-query {
+    padding: 80px 20px;
+    width: 100%;
+    height: fit-content;
+  }
+
   &__header {
     margin-bottom: 40px;
   }
 
   &__title {
     font-size: 100px;
+    @include mobile-query {
+      font-size: 80px;
+    }
   }
 
   &__description {
     font-family: 'Fogtwo';
     font-size: 25px;
+    @include mobile-query {
+      font-size: 20px;
+    }
   }
 
   &__wrapper {
     display: flex;
     height: 50vh;
     justify-content: space-between;
+    @include mobile-query {
+      display: block;
+    }
   }
 
   &__canvas {
     width: 50%;
     height: 100%;
     pointer-events: none;
+    @include mobile-query {
+      width: 100%;
+    }
     canvas {
       width: 100%;
       height: 100%;
@@ -46,6 +65,9 @@
     background-color: var(--black);
     color: var(--white);
     border-radius: 20px;
+    @include mobile-query {
+      width: 100%;
+    }
 
     &__header {
       display: flex;
