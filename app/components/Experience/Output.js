@@ -26,7 +26,6 @@ export default class Output {
     this.resources = new Resources(sources);
 
     this.resources.on('ready', () => {
-      console.log('resources are ready');
       this.setLoading(false);
       this.createStats();
       this.createRenderer();
@@ -91,13 +90,23 @@ export default class Output {
       duration: 2,
       ease: 'power2.inOut',
       onUpdate: () => {
+        this.camera.position.x = 0;
+        this.camera.position.y = 0;
+        this.camera.position.z = this.settings.cameraRadius.value;
+      },
+    });
+    /* gsap.to(this.settings.cameraRadius, {
+      value: 8,
+      duration: 2,
+      ease: 'power2.inOut',
+      onUpdate: () => {
         this.camera.position.x =
           Math.cos(this.settings.radius) * this.settings.cameraRadius.value;
         this.camera.position.y = 3;
         this.camera.position.z =
           Math.sin(this.settings.radius) * this.settings.cameraRadius.value;
       },
-    });
+    }); */
   }
 
   createLights() {
@@ -131,7 +140,7 @@ export default class Output {
     this.giuliaMesh.scale.set(0.01, 0.01, 0.01);
 
     this.mixer = new THREE.AnimationMixer(this.giuliaMesh);
-    this.clip = this.giulia.animations[0];
+    this.clip = this.giulia.animations[1];
     this.action = this.mixer.clipAction(this.clip);
     this.action.setLoop(THREE.LoopOnce);
     this.action.clampWhenFinished = true; // Make the animation stay on its final frame when finished

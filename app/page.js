@@ -1,13 +1,13 @@
+'use client';
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
-import Experience from './components/Experience/Experience';
-import PlaylistWebGL from './components/PlaylistWebGL/PlaylistWebGL';
 import Information from './components/Information/Information';
 import Hero from './components/Hero/Hero';
 import Photos from './components/Photos/Photos';
 import styles from './page.module.scss';
 import PageWrapper from './components/PageWrapper/PageWrapper';
-
+import Loader from './components/Loader/Loader';
 const DynamicPlaylistWebGL = dynamic(
   () => import('./components/PlaylistWebGL/PlaylistWebGL'),
   { ssr: false }
@@ -19,10 +19,16 @@ const DynamicExperience = dynamic(
 );
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
+  const handleLoading = () => {
+    console.log('loading');
+    setLoading(false);
+  };
   return (
     <div className={`${styles.page} page`}>
       <PageWrapper>
-        <DynamicExperience />
+        <Loader loading={loading} />
+        <DynamicExperience handleLoading={handleLoading} />
         <Hero />
         <Photos />
         <DynamicPlaylistWebGL />

@@ -1,15 +1,15 @@
 'use client';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Experience.module.scss';
 import Output from './Output';
 import Loader from '../Loader/Loader';
 
-const Experience = () => {
+const Experience = ({ handleLoading }) => {
   const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
   const outputRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       // Code that uses window here
       outputRef.current = new Output({
@@ -20,9 +20,15 @@ const Experience = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!loading) {
+      // outputRef.current.start();
+      handleLoading();
+    }
+  }, [loading]);
+
   return (
     <>
-      <Loader loading={loading} />
       <div ref={containerRef} className={`${styles.experience}`} />
     </>
   );
