@@ -34,7 +34,7 @@ export default class Output {
       this.createLights();
       this.createModels();
       this.setupScrollTrigger();
-      this.createGUI();
+      // this.createGUI();
 
       this.render();
     });

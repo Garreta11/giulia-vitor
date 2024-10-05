@@ -235,6 +235,7 @@ const PlaylistWebGL = () => {
               onMouseEnter={() => setShowList(true)}
               onMouseLeave={() => setShowList(false)}
               data-song={selectedSong}
+              data-lenis-prevent
             >
               <div className={styles.playlist__list__header}>
                 <svg

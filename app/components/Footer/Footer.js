@@ -3,6 +3,7 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import Link from 'next/link';
+import { useLenis } from 'lenis/react';
 
 const links = [
   {
@@ -20,10 +21,23 @@ const links = [
 ];
 
 const Footer = () => {
+  const lenis = useLenis();
+
+  const scrollToOptions = {
+    // Customize scroll options if needed
+    offset: 0,
+    lerp: 0.1,
+    duration: 1,
+  };
+
   const handleClick = (e, href) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default anchor behavior
     const targetElement = document.querySelector(href);
-    if (targetElement) {
+
+    if (lenis && targetElement) {
+      lenis.scrollTo(targetElement, scrollToOptions);
+    } else if (targetElement) {
+      // Fallback to native smooth scroll
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   };

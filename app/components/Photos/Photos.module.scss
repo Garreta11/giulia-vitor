@@ -27,16 +27,17 @@
 
     &:nth-of-type(9n+3) {
       margin-top: 50vh;
-      grid-column: 9 / span 2;
+      grid-column: 8 / span 3;
     }
 
     &:nth-of-type(9n+4) {
-      margin-top: -50vh;
-      grid-column: 7 / span 4;
+      margin-top: -40vh;
+      grid-column: 7 / span 5;
     }
 
     &:nth-of-type(9n+5) {
       grid-column: 4 / span 6;
+      margin-top: 50vh;
     }
 
     &:nth-of-type(9n+6) {

@@ -89,6 +89,9 @@
         align-items: center;
         gap: 10px;
         width: 50%;
+        @include mobile-query {
+          width: 70%;
+        }
       }
 
       &__info {
@@ -131,14 +134,25 @@
       align-items: flex-end;
       cursor: pointer;
       padding: 0px 20px;
+      text-align: left;
+      @include mobile-query {
+        padding: 5px 20px;
+        gap: 5px;
+      }
       &__song {
         font-size: 30px;
         pointer-events: none;
+        @include mobile-query {
+          font-size: 15px;
+        }
       }
 
       &__artist {
         font-size: 12px;
         pointer-events: none;
+        @include mobile-query {
+          font-size: 10px;
+        }
       }
 
       &:hover {

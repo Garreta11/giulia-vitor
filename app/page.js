@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
+import Footer from './components/Footer/Footer';
+
 import Information from './components/Information/Information';
 import Hero from './components/Hero/Hero';
 import Photos from './components/Photos/Photos';
@@ -33,6 +35,7 @@ const Home = () => {
         <Photos />
         <DynamicPlaylistWebGL />
         <Information />
+        <Footer />
       </PageWrapper>
     </div>
   );
