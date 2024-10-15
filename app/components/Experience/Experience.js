@@ -1,13 +1,14 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import styles from './Experience.module.scss';
 import Output from './Output';
-import Loader from '../Loader/Loader';
-
+import { DataContext } from '@/app/context/context';
 const Experience = ({ handleLoading }) => {
   const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
   const outputRef = useRef(null);
+
+  const { start, setStart } = useContext(DataContext);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -21,8 +22,13 @@ const Experience = ({ handleLoading }) => {
   }, []);
 
   useEffect(() => {
+    if (start) {
+      outputRef.current.start();
+    }
+  }, [start]);
+
+  useEffect(() => {
     if (!loading) {
-      // outputRef.current.start();
       handleLoading();
     }
   }, [loading]);

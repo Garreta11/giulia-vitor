@@ -1,6 +1,8 @@
 import EventEmitter from './EventEmitter';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+
 export default class Resources extends EventEmitter {
   constructor(sources) {
     super();
@@ -18,6 +20,7 @@ export default class Resources extends EventEmitter {
   setLoaders() {
     this.gltfLoader = new GLTFLoader();
     this.fbxLoader = new FBXLoader();
+    this.rgbeLoader = new RGBELoader();
   }
 
   startLoading() {
@@ -28,6 +31,10 @@ export default class Resources extends EventEmitter {
         });
       } else if (source.type === 'fbxModel') {
         this.fbxLoader.load(source.path, (file) => {
+          this.sourceLoaded(source, file);
+        });
+      } else if (source.type === 'environmentMap') {
+        this.rgbeLoader.load(source.path, (file) => {
           this.sourceLoaded(source, file);
         });
       }

@@ -1,7 +1,8 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import styles from './Loader.module.scss';
 import gsap from 'gsap';
+import { DataContext } from '@/app/context/context';
 
 const Loader = ({ loading }) => {
   const nameRef = useRef(null);
@@ -9,6 +10,8 @@ const Loader = ({ loading }) => {
   const buttonRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [animationDone, setAnimationDone] = useState(false);
+
+  const { setStart } = useContext(DataContext);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -70,6 +73,7 @@ const Loader = ({ loading }) => {
   }, [loading, animationDone]);
 
   const handleClick = () => {
+    setStart(true);
     gsap.to(buttonRef.current.querySelector('button'), {
       z: 1000,
       duration: 1,

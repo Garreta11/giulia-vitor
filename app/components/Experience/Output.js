@@ -19,6 +19,11 @@ export default class Output {
     this.settings = {
       radius: 1.4,
       cameraRadius: { value: 80 },
+      position: {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
     };
 
     this.clock = new THREE.Clock();
@@ -30,11 +35,14 @@ export default class Output {
       this.createStats();
       this.createRenderer();
       this.createScene();
+      this.createHDRI();
       this.createCamera();
       this.createLights();
+      this.createOrbitControls();
+      this.createScenario();
       this.createModels();
       this.setupScrollTrigger();
-      // this.createGUI();
+      this.createGUI();
 
       this.render();
     });
@@ -45,13 +53,14 @@ export default class Output {
 
   createGUI() {
     this.gui = new GUI();
-    const radiusController = this.gui
-      .add(this.settings, 'radius', 0, Math.PI * 2)
-      .step(0.01);
-    radiusController.onChange((value) => {
-      console.log(value);
-      this.camera.position.x = Math.cos(value) * this.cameraRadius;
-      this.camera.position.z = Math.sin(value) * this.cameraRadius;
+    this.gui.add(this.settings.position, 'x', -50, 50).onChange((value) => {
+      this.camera.position.x = value;
+    });
+    this.gui.add(this.settings.position, 'y', -50, 50).onChange((value) => {
+      this.camera.position.y = value;
+    });
+    this.gui.add(this.settings.position, 'z', -50, 50).onChange((value) => {
+      this.camera.position.z = value;
     });
   }
 
@@ -74,7 +83,12 @@ export default class Output {
 
   createScene() {
     this.scene = new THREE.Scene();
-    // this.scene.background = new THREE.Color(0xffffff);
+  }
+
+  createHDRI() {
+    this.hdri = this.resources.items.envmap;
+    this.hdri.mapping = THREE.EquirectangularReflectionMapping;
+    this.scene.environment = this.hdri;
   }
 
   createCamera() {
@@ -85,28 +99,8 @@ export default class Output {
       2000
     );
 
-    gsap.to(this.settings.cameraRadius, {
-      value: 8,
-      duration: 2,
-      ease: 'power2.inOut',
-      onUpdate: () => {
-        this.camera.position.x = 0;
-        this.camera.position.y = 0;
-        this.camera.position.z = this.settings.cameraRadius.value;
-      },
-    });
-    /* gsap.to(this.settings.cameraRadius, {
-      value: 8,
-      duration: 2,
-      ease: 'power2.inOut',
-      onUpdate: () => {
-        this.camera.position.x =
-          Math.cos(this.settings.radius) * this.settings.cameraRadius.value;
-        this.camera.position.y = 3;
-        this.camera.position.z =
-          Math.sin(this.settings.radius) * this.settings.cameraRadius.value;
-      },
-    }); */
+    this.camera.position.y = 10;
+    this.camera.position.z = 200;
   }
 
   createLights() {
@@ -114,14 +108,15 @@ export default class Output {
     this.scene.add(ambientLight);
 
     let dirLight = new THREE.DirectionalLight(0xffffff, 2);
-    dirLight.color.setHSL(0.1, 1, 0.95);
-    dirLight.position.set(-3, 2.5, 1);
-    dirLight.position.multiplyScalar(100);
+    dirLight.position.set(0, 5, 5);
     this.scene.add(dirLight);
 
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
+
+    const helper = new THREE.DirectionalLightHelper(dirLight, 1);
+    this.scene.add(helper);
 
     let d = 50;
     dirLight.shadow.camera.left = -d;
@@ -130,6 +125,28 @@ export default class Output {
     dirLight.shadow.camera.bottom = -d;
 
     dirLight.shadow.camera.far = 20000;
+    dirLight.shadow.bias = -0.0001;
+  }
+
+  createScenario() {
+    this.exhibition = this.resources.items.exhibition;
+
+    this.exhibition.children.forEach((element) => {
+      element.receiveShadow = true;
+      element.material = new THREE.MeshStandardMaterial({
+        color: 0x2a2a2a,
+        roughness: 0.3,
+        metalness: 0,
+        side: THREE.DoubleSide,
+      });
+    });
+
+    this.scene.add(this.exhibition);
+
+    this.exhibition.scale.set(0.05, 0.05, 0.05);
+    this.exhibition.position.y = -2.5;
+    this.exhibition.position.z = -5;
+    this.exhibition.rotation.y = Math.PI;
   }
 
   createModels() {
@@ -138,18 +155,26 @@ export default class Output {
     this.giuliaMesh = this.giulia.scene.children[0];
 
     this.giuliaMesh.scale.set(0.01, 0.01, 0.01);
+    this.giuliaMesh.position.y = -2;
+    this.giuliaMesh.castShadow = true;
+    this.giuliaMesh.receiveShadow = true;
+    this.giuliaMesh.children.forEach((element) => {
+      element.receiveShadow = true;
+      element.castShadow = true;
+    });
 
     this.mixer = new THREE.AnimationMixer(this.giuliaMesh);
     this.clip = this.giulia.animations[1];
     this.action = this.mixer.clipAction(this.clip);
-    this.action.setLoop(THREE.LoopOnce);
-    this.action.clampWhenFinished = true; // Make the animation stay on its final frame when finished
+    // this.action.setLoop(THREE.LoopOnce);
+    // this.action.clampWhenFinished = true; // Make the animation stay on its final frame when finished
     this.action.play();
     this.scene.add(this.giuliaMesh);
   }
 
   createOrbitControls() {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.enableZoom = false;
   }
 
   setupScrollTrigger() {
@@ -219,6 +244,40 @@ export default class Output {
     ScrollTrigger.matchMedia({
       '(prefers-reduced-motion: no-preference)': this.desktopAnimation,
     });
+  }
+
+  start() {
+    gsap.fromTo(
+      this.camera.position,
+      {
+        x: 0,
+        y: 10,
+        z: 200,
+      },
+      {
+        x: 0,
+        y: -1,
+        z: 7,
+        delay: 1,
+        duration: 5,
+      }
+    );
+
+    gsap.fromTo(
+      this.exhibition.rotation,
+      {
+        x: 0,
+        y: Math.PI,
+        z: 0,
+      },
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+        delay: 1,
+        duration: 3,
+      }
+    );
   }
 
   /**

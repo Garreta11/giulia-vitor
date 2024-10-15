@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect } from 'react';
+import { DataProvider } from '@/app/context/context';
 import Lenis from 'lenis';
 
 const PageWrapper = ({ children }) => {
@@ -14,7 +15,7 @@ const PageWrapper = ({ children }) => {
     requestAnimationFrame(raf);
   }, []);
 
-  return <div>{children}</div>;
+  return <DataProvider>{children}</DataProvider>;
 };
 
 export default PageWrapper;

@@ -10,6 +10,7 @@ import Photos from './components/Photos/Photos';
 import styles from './page.module.scss';
 import PageWrapper from './components/PageWrapper/PageWrapper';
 import Loader from './components/Loader/Loader';
+
 const DynamicPlaylistWebGL = dynamic(
   () => import('./components/PlaylistWebGL/PlaylistWebGL'),
   { ssr: false }

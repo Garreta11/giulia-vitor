@@ -19,4 +19,14 @@ export default [
     type: 'gltfModel',
     path: '/models/vitor.glb',
   },
+  {
+    name: 'exhibition',
+    type: 'fbxModel',
+    path: '/models/exhibition.fbx',
+  },
+  {
+    name: 'envmap',
+    type: 'environmentMap',
+    path: '/textures/studio_small_08_2k.hdr',
+  },
 ];
