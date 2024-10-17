@@ -22,9 +22,10 @@ export const getAccessToken = async () => {
   return response.json();
 };
 
-export const getPlaylist = async () => {
+/* export const getPlaylist = async () => {
   const { access_token } = await getAccessToken();
-  const url = 'https://api.spotify.com/v1/playlists/5OAdJaEhIju8OYKCSNRDD4';
+  //const url = 'https://api.spotify.com/v1/playlists/5OAdJaEhIju8OYKCSNRDD4';
+  const url = 'https://api.spotify.com/v1/playlists/1RAjDfseAWWrIRWrSXChFe';
 
   try {
     const response = await fetch(url, {
@@ -39,7 +40,44 @@ export const getPlaylist = async () => {
     }
 
     const result = await response.json();
+    console.log(result);
     return result; // Return the result instead of just logging it
+  } catch (error) {
+    console.error('Error fetching Spotify playlist:', error);
+    return null; // Return null if there's an error
+  }
+}; */
+
+export const getPlaylist = async () => {
+  const { access_token } = await getAccessToken();
+  // const url = 'https://api.spotify.com/v1/playlists/1RAjDfseAWWrIRWrSXChFe/tracks';
+  const url =
+    'https://api.spotify.com/v1/playlists/5OAdJaEhIju8OYKCSNRDD4/tracks';
+  let allTracks = [];
+  let nextUrl = url;
+
+  try {
+    // Keep fetching until there are no more pages
+    while (nextUrl) {
+      const response = await fetch(nextUrl, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      allTracks = allTracks.concat(result.items); // Accumulate tracks
+
+      nextUrl = result.next; // Update nextUrl to the next page URL (or null if done)
+    }
+
+    console.log(allTracks);
+    return allTracks; // Return the full list of tracks
   } catch (error) {
     console.error('Error fetching Spotify playlist:', error);
     return null; // Return null if there's an error

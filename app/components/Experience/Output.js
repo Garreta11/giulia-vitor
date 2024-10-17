@@ -19,7 +19,7 @@ export default class Output {
     this.settings = {
       radius: 1.4,
       cameraRadius: { value: 80 },
-      position: {
+      rotation: {
         x: 0,
         y: 0,
         z: 0,
@@ -41,7 +41,6 @@ export default class Output {
       this.createOrbitControls();
       this.createScenario();
       this.createModels();
-      this.setupScrollTrigger();
       this.createGUI();
 
       this.render();
@@ -53,14 +52,14 @@ export default class Output {
 
   createGUI() {
     this.gui = new GUI();
-    this.gui.add(this.settings.position, 'x', -50, 50).onChange((value) => {
-      this.camera.position.x = value;
+    this.gui.add(this.settings.rotation, 'x', -50, 50).onChange((value) => {
+      this.scenario.rotation.x = value;
     });
-    this.gui.add(this.settings.position, 'y', -50, 50).onChange((value) => {
-      this.camera.position.y = value;
+    this.gui.add(this.settings.rotation, 'y', -50, 50).onChange((value) => {
+      this.scenario.rotation.y = value;
     });
-    this.gui.add(this.settings.position, 'z', -50, 50).onChange((value) => {
-      this.camera.position.z = value;
+    this.gui.add(this.settings.rotation, 'z', -50, 50).onChange((value) => {
+      this.scenario.rotation.z = value;
     });
   }
 
@@ -107,7 +106,7 @@ export default class Output {
     let ambientLight = new THREE.AmbientLight(0xffffff, 1);
     this.scene.add(ambientLight);
 
-    let dirLight = new THREE.DirectionalLight(0xffffff, 2);
+    let dirLight = new THREE.DirectionalLight(0xffffff, 1);
     dirLight.position.set(0, 5, 5);
     this.scene.add(dirLight);
 
@@ -115,8 +114,8 @@ export default class Output {
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
 
-    const helper = new THREE.DirectionalLightHelper(dirLight, 1);
-    this.scene.add(helper);
+    // const helper = new THREE.DirectionalLightHelper(dirLight, 1);
+    // this.scene.add(helper);
 
     let d = 50;
     dirLight.shadow.camera.left = -d;
@@ -129,121 +128,67 @@ export default class Output {
   }
 
   createScenario() {
-    this.exhibition = this.resources.items.exhibition;
-
-    this.exhibition.children.forEach((element) => {
-      element.receiveShadow = true;
-      element.material = new THREE.MeshStandardMaterial({
-        color: 0x2a2a2a,
-        roughness: 0.3,
-        metalness: 0,
-        side: THREE.DoubleSide,
-      });
+    const geometry = new THREE.CylinderGeometry(1, 1, 0.2, 32);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x2a2a2a,
+      roughness: 0.3,
+      metalness: 0,
+      side: THREE.DoubleSide,
     });
+    this.cylinder1 = new THREE.Mesh(geometry, material);
+    this.cylinder1.receiveShadow = true;
+    this.cylinder1.position.x = -2;
+    this.cylinder1.position.y = -2.1;
 
-    this.scene.add(this.exhibition);
+    this.cylinder2 = new THREE.Mesh(geometry, material);
+    this.cylinder2.receiveShadow = true;
+    this.cylinder2.position.x = 2;
+    this.cylinder2.position.y = -2.1;
 
-    this.exhibition.scale.set(0.05, 0.05, 0.05);
-    this.exhibition.position.y = -2.5;
-    this.exhibition.position.z = -5;
-    this.exhibition.rotation.y = Math.PI;
+    this.scenario = new THREE.Group();
+    this.scenario.add(this.cylinder1);
+    this.scenario.add(this.cylinder2);
+
+    this.scene.add(this.scenario);
   }
 
   createModels() {
     this.models = this.resources.items;
+
+    // Giulia
     this.giulia = this.models.giulia;
     this.giuliaMesh = this.giulia.scene.children[0];
-
     this.giuliaMesh.scale.set(0.01, 0.01, 0.01);
     this.giuliaMesh.position.y = -2;
+    this.giuliaMesh.position.x = -2;
     this.giuliaMesh.castShadow = true;
     this.giuliaMesh.receiveShadow = true;
     this.giuliaMesh.children.forEach((element) => {
       element.receiveShadow = true;
       element.castShadow = true;
     });
-
     this.mixer = new THREE.AnimationMixer(this.giuliaMesh);
     this.clip = this.giulia.animations[1];
     this.action = this.mixer.clipAction(this.clip);
-    // this.action.setLoop(THREE.LoopOnce);
-    // this.action.clampWhenFinished = true; // Make the animation stay on its final frame when finished
     this.action.play();
-    this.scene.add(this.giuliaMesh);
+    this.scenario.add(this.giuliaMesh);
+
+    // Vitor
+    this.vitor = this.models.vitor;
+    this.vitorMesh = this.vitor.scene.children[0];
+    this.vitorMesh.position.y = -2;
+    this.vitorMesh.position.x = 2;
+    this.vitorMesh.receiveShadow = true;
+    this.vitorMesh.children.forEach((element) => {
+      element.receiveShadow = true;
+      element.castShadow = true;
+    });
+    this.scenario.add(this.vitorMesh);
   }
 
   createOrbitControls() {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableZoom = false;
-  }
-
-  setupScrollTrigger() {
-    gsap.registerPlugin(ScrollTrigger);
-
-    this.desktopAnimation = () => {
-      this.section = 0;
-      this.tl = gsap.timeline({
-        default: {
-          duration: 1,
-          ease: 'power2.inOut',
-        },
-        scrollTrigger: {
-          trigger: '.page',
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 0.5,
-        },
-      });
-
-      /* // Section #1
-      this.tl.to(
-        this.camera.position,
-        {
-          x: 1,
-          y: 3,
-          z: 8,
-          onStart: () => {
-            console.log('onStart');
-            this.clip = this.giulia.animations[1];
-            this.action.fadeOut(0.5);
-            this.action = this.mixer.clipAction(this.clip);
-            this.action.fadeIn(0.5);
-            // Play the animation only once
-            // this.action.setLoop(THREE.LoopOnce);
-            // this.action.clampWhenFinished = true; // Make the animation stay on its final frame when finished
-            this.action.play();
-          },
-        },
-        this.section
-      );
-
-      // Section #2
-      this.section++;
-      this.tl.to(
-        this.camera.position,
-        {
-          x: -1,
-          y: 3,
-          z: 8,
-          onStart: () => {
-            this.clip = this.giulia.animations[3];
-
-            this.action.fadeOut(0.5);
-            this.action = this.mixer.clipAction(this.clip);
-            this.action.fadeIn(0.5);
-            // Play the animation only once
-            // this.action.setLoop(THREE.LoopOnce);
-            // this.action.clampWhenFinished = true; // Make the animation stay on its final frame when finished
-            this.action.play();
-          },
-        },
-        this.section
-      ); */
-    };
-
-    ScrollTrigger.matchMedia({
-      '(prefers-reduced-motion: no-preference)': this.desktopAnimation,
-    });
   }
 
   start() {
@@ -259,12 +204,12 @@ export default class Output {
         y: -1,
         z: 7,
         delay: 1,
-        duration: 5,
+        duration: 2,
       }
     );
 
     gsap.fromTo(
-      this.exhibition.rotation,
+      this.scenario.rotation,
       {
         x: 0,
         y: Math.PI,
@@ -274,8 +219,8 @@ export default class Output {
         x: 0,
         y: 0,
         z: 0,
-        delay: 1,
-        duration: 3,
+        delay: 3,
+        duration: 1,
       }
     );
   }

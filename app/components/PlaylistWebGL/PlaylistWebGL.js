@@ -25,7 +25,7 @@ const PlaylistWebGL = () => {
   const fetchPlaylist = async () => {
     const data = await getPlaylist(); // Call getPlaylist and wait for result
     console.log(data);
-    setPlaylist(data.tracks.items); // Store playlist in state
+    setPlaylist(data); // Store playlist in state
   };
 
   useEffect(() => {
