@@ -16,6 +16,7 @@
     "gsap": "^3.12.5",
     "lenis": "^1.1.13",
     "next": "14.2.12",
+    "ogl": "^1.0.9",
     "path-browserify": "^1.0.1",
     "raw-loader": "^4.0.2",
     "react": "^18",

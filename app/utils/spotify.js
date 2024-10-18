@@ -76,7 +76,6 @@ export const getPlaylist = async () => {
       nextUrl = result.next; // Update nextUrl to the next page URL (or null if done)
     }
 
-    console.log(allTracks);
     return allTracks; // Return the full list of tracks
   } catch (error) {
     console.error('Error fetching Spotify playlist:', error);

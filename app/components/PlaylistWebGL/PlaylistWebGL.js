@@ -24,7 +24,6 @@ const PlaylistWebGL = () => {
 
   const fetchPlaylist = async () => {
     const data = await getPlaylist(); // Call getPlaylist and wait for result
-    console.log(data);
     setPlaylist(data); // Store playlist in state
   };
 
@@ -145,7 +144,6 @@ const PlaylistWebGL = () => {
           audioRef.current.src = playlist[0].track.preview_url;
         } else {
           const newSong = Number(list.getAttribute('data-song')) + 1;
-          console.log(newSong);
           attractTo = newSong;
           setSelectedSong(newSong);
           audioRef.current.src = playlist[newSong].track.preview_url;
