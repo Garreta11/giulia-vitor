@@ -33,7 +33,6 @@ export default class Media {
             this.targetElement.clientHeight
           ),
         },
-        uStrength: { value: 0 },
       },
       vertexShader: vertex,
       fragmentShader: fragment,
@@ -47,6 +46,11 @@ export default class Media {
     this.updateScale();
     this.updateX();
     this.updateY();
+
+    this.mesh.material.uniforms.uImageSizes.value = [
+      this.image.clientWidth,
+      this.image.clientHeight,
+    ];
 
     this.mesh.material.uniforms.uPlaneSizes.value = [
       this.mesh.scale.x,
@@ -98,7 +102,6 @@ export default class Media {
     this.updateScale();
     this.updateX();
     this.updateY(y.current);
-    console.log(y.current);
 
     const planeOffset = this.mesh.scale.y / 2;
     const viewportOffset = this.viewport.height / 2;
@@ -119,7 +122,5 @@ export default class Media {
       this.isBefore = false;
       this.isAfter = false;
     }
-
-    // this.mesh.material.uniforms.uStrength.value = ((y.current - y.last) / this.targetElement.clientWidth) * 10;
   }
 }

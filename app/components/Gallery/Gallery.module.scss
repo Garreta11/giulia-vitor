@@ -1,6 +1,6 @@
+@import '../../breakpoints';
+
 .gallery {
-  height: 295rem;
-  // height: 100vh;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -8,94 +8,74 @@
 
   &__gallery {
     height: 200vh;
+    visibility: hidden;
   }
   
   &__figure {
     position: absolute;
-    visibility: hidden;
+
+    @include mobile-query {
+      // position: initial;
+      // top: initial !important;
+      right: 0 !important;
+      left: initial !important;
+      width: 90vw !important;
+      height: fit-content !important;
+    }
  
     &:nth-child(1) {
-      height: 40rem;
-      width: 70rem;
+      width: 3629px;
+      height: 2433px;
     }
   
     &:nth-child(2) {
-      height: 50rem;
-      left: 85rem;
-      top: 30rem;
-      width: 40rem;
+      left: 50rem;
+      top: 10rem;
+      width: 1200px;
+      height: 1600px;
     }
   
     &:nth-child(3) {
-      height: 50rem;
       left: 15rem;
       top: 60rem;
-      width: 60rem;
+      width: 603px;
+      height: 768px;
     }
   
     &:nth-child(4) {
-      height: 30rem;
       right: 0;
-      top: 10rem;
-      width: 50rem;
+      top: 35rem;
+      width: 1280px;
+      height: 960px;
     }
   
     &:nth-child(5) {
-      height: 60rem;
-      right: 15rem;
+      left: 45rem;
       top: 55rem;
-      width: 40rem;
+      width: 1024px;
+      height: 768px;
     }
   
     &:nth-child(6) {
-      height: 75rem;
-      left: 5rem;
-      top: 120rem;
-      width: 57.5rem;
+      left: 50rem;
+      top: 90rem;
+      width: 2048px;
+      height: 1536px;
     }
   
     &:nth-child(7) {
-      height: 70rem;
-      right: 0;
-      top: 130rem;
-      width: 50rem;
+      left: 80rem;
+      top: 110rem;
+      width: 2048px;
+      height: 1536px;
     }
   
     &:nth-child(8) {
-      height: 50rem;
       left: 85rem;
-      top: 95rem;
-      width: 40rem;
+      top: 60rem;
+      width: 1202px;
+      height: 1600px;
     }
-  
-    &:nth-child(9) {
-      height: 65rem;
-      left: 75rem;
-      top: 155rem;
-      width: 50rem;
-    }
-  
-    &:nth-child(10) {
-      height: 43rem;
-      right: 0;
-      top: 215rem;
-      width: 30rem;
-    }
-  
-    &:nth-child(11) {
-      height: 50rem;
-      left: 70rem;
-      top: 235rem;
-      width: 80rem;
-    }
-  
-    &:nth-child(12) {
-      left: 0;
-      top: 210rem;
-      height: 70rem;
-      width: 50rem;
-    }
-
   }
 
   &__img {
@@ -105,6 +85,10 @@
     position: absolute;
     top: 0;
     width: 100%;
+    @include mobile-query {
+      position: relative;
+      height: auto;
+    }
   }
 
   &__canvas {

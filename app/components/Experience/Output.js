@@ -32,7 +32,7 @@ export default class Output {
 
     this.resources.on('ready', () => {
       this.setLoading(false);
-      this.createStats();
+      // this.createStats();
       this.createRenderer();
       this.createScene();
       this.createHDRI();
@@ -41,7 +41,7 @@ export default class Output {
       this.createOrbitControls();
       this.createScenario();
       this.createModels();
-      this.createGUI();
+      // this.createGUI();
 
       this.render();
     });
@@ -243,13 +243,13 @@ export default class Output {
   render() {
     const animate = () => {
       requestAnimationFrame(animate);
-      this.stats.begin();
+      if (this.stats) this.stats.begin();
       this.delta = this.clock.getDelta();
       //this.camera.lookAt(0, 0, 0);
       this.renderer.render(this.scene, this.camera);
       if (this.controls) this.controls.update();
       if (this.mixer) this.mixer.update(this.delta);
-      this.stats.end();
+      if (this.stats) this.stats.end();
     };
     animate();
   }
