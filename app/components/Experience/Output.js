@@ -15,6 +15,7 @@ export default class Output {
     this.height = this.window.innerHeight;
     this.targetElement = _options.targetElement;
     this.setLoading = _options.setLoading;
+    this.isMobile = _options.isMobile;
 
     this.settings = {
       radius: 1.4,
@@ -137,12 +138,12 @@ export default class Output {
     });
     this.cylinder1 = new THREE.Mesh(geometry, material);
     this.cylinder1.receiveShadow = true;
-    this.cylinder1.position.x = -2;
+    this.cylinder1.position.x = this.isMobile ? -1 : -2;
     this.cylinder1.position.y = -2.1;
 
     this.cylinder2 = new THREE.Mesh(geometry, material);
     this.cylinder2.receiveShadow = true;
-    this.cylinder2.position.x = 2;
+    this.cylinder2.position.x = this.isMobile ? 1 : 2;
     this.cylinder2.position.y = -2.1;
 
     this.scenario = new THREE.Group();
@@ -152,44 +153,6 @@ export default class Output {
     this.scene.add(this.scenario);
   }
 
-  /* createModels() {
-    this.models = this.resources.items;
-
-    // Giulia
-    this.giulia = this.models.giulia;
-    this.giuliaMesh = this.giulia.scene.children[0];
-    this.giuliaMesh.scale.set(0.01, 0.01, 0.01);
-    this.giuliaMesh.position.y = -2;
-    this.giuliaMesh.position.x = -2;
-    this.giuliaMesh.castShadow = true;
-    this.giuliaMesh.receiveShadow = true;
-    this.giuliaMesh.children.forEach((element) => {
-      element.receiveShadow = true;
-      element.castShadow = true;
-    });
-    this.mixer = new THREE.AnimationMixer(this.giuliaMesh);
-    this.clip = this.giulia.animations[1];
-    this.action = this.mixer.clipAction(this.clip);
-    this.action.play();
-    this.scenario.add(this.giuliaMesh);
-
-    // Vitor
-    this.vitor = this.models.vitor;
-    this.vitorMesh = this.vitor.scene.children[0];
-    this.vitorMesh.position.y = -2;
-    this.vitorMesh.position.x = 2;
-    this.vitorMesh.receiveShadow = true;
-    this.vitorMesh.children.forEach((element) => {
-      element.receiveShadow = true;
-      element.castShadow = true;
-    });
-    this.mixer = new THREE.AnimationMixer(this.vitorMesh);
-    this.clip = this.vitor.animations[2];
-    this.action = this.mixer.clipAction(this.clip);
-    this.action.play();
-    this.scenario.add(this.vitorMesh);
-  } */
-
   createModels() {
     this.models = this.resources.items;
 
@@ -198,7 +161,7 @@ export default class Output {
     this.giuliaMesh = this.giulia.scene.children[0];
     this.giuliaMesh.scale.set(0.01, 0.01, 0.01);
     this.giuliaMesh.position.y = -2;
-    this.giuliaMesh.position.x = -2;
+    this.giuliaMesh.position.x = this.isMobile ? -1 : -2;
     this.giuliaMesh.castShadow = true;
     this.giuliaMesh.receiveShadow = true;
     this.giuliaMesh.children.forEach((element) => {
@@ -215,7 +178,7 @@ export default class Output {
     this.vitor = this.models.vitor;
     this.vitorMesh = this.vitor.scene.children[0];
     this.vitorMesh.position.y = -2;
-    this.vitorMesh.position.x = 2;
+    this.vitorMesh.position.x = this.isMobile ? 1 : 2;
     this.vitorMesh.receiveShadow = true;
     this.vitorMesh.children.forEach((element) => {
       element.receiveShadow = true;

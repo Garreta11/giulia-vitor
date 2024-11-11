@@ -8,16 +8,21 @@ const Experience = ({ handleLoading }) => {
   const containerRef = useRef(null);
   const outputRef = useRef(null);
 
-  const { start, setStart } = useContext(DataContext);
+  const { start } = useContext(DataContext);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // Check if the device is mobile
+      const mobileQuery = window.matchMedia('(max-width: 1024px)');
+
       // Code that uses window here
       outputRef.current = new Output({
         targetElement: containerRef.current,
         setLoading,
         window: window,
+        isMobile: mobileQuery.matches,
       });
+      return () => mobileQuery.removeEventListener('change', handleResize);
     }
   }, []);
 
