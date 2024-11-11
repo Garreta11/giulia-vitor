@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
+import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 import Information from './components/Information/Information';
@@ -25,12 +26,12 @@ const DynamicExperience = dynamic(
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const handleLoading = () => {
-    console.log('loading');
     setLoading(false);
   };
   return (
     <div className={`${styles.page} page`}>
       <PageWrapper>
+        <Header />
         <Loader loading={loading} />
         <DynamicExperience handleLoading={handleLoading} />
         <Hero />

@@ -2,10 +2,15 @@
 
 .header {
   position: fixed;
-  width: 100%;
+  width: 60%;
   mix-blend-mode: difference;
   z-index: 100;
   pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: headerAnimation 1s ease-in-out 1 forwards;
+  animation-delay: 2s;
 
   &__wrapper {
     display: flex;
@@ -32,9 +37,62 @@
         font-size: 12px;
       }
     }
+
+    svg {
+      animation: svgAnimation 1s ease-in-out 1 forwards;
+      animation-delay: 2s;
+      margin-top: 10px;
+      width: 500px;
+      height: auto;
+      path {
+        fill: transparent;
+        stroke: var(--white);
+        stroke-dasharray: 590;
+        stroke-dashoffset: 590;
+        animation: textAnimation 1s ease-in-out 1 forwards;
+        animation-delay: 1s;
+      }
+    }
   }
 
   &__info {
     padding-top: 10px;
+    text-align: center;
+  }
+}
+
+@keyframes headerAnimation {
+  0% {
+    width: 60%;
+    top: 50%;
+  }
+  100% {
+    width: 100%;
+    top: 0%;
+    transform: translate(-50%, 0px);
+  }
+}
+
+@keyframes svgAnimation {
+  0% {
+    width: 500px;
+    height: auto;
+  }
+  100% {
+    width: 224px;
+    height: auto;
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    stroke-dashoffset: 590;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    fill: var(--white);
+    stroke-dashoffset: 0;
   }
 }

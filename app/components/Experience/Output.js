@@ -152,7 +152,7 @@ export default class Output {
     this.scene.add(this.scenario);
   }
 
-  createModels() {
+  /* createModels() {
     this.models = this.resources.items;
 
     // Giulia
@@ -183,6 +183,48 @@ export default class Output {
       element.receiveShadow = true;
       element.castShadow = true;
     });
+    this.mixer = new THREE.AnimationMixer(this.vitorMesh);
+    this.clip = this.vitor.animations[2];
+    this.action = this.mixer.clipAction(this.clip);
+    this.action.play();
+    this.scenario.add(this.vitorMesh);
+  } */
+
+  createModels() {
+    this.models = this.resources.items;
+
+    // Giulia
+    this.giulia = this.models.giulia;
+    this.giuliaMesh = this.giulia.scene.children[0];
+    this.giuliaMesh.scale.set(0.01, 0.01, 0.01);
+    this.giuliaMesh.position.y = -2;
+    this.giuliaMesh.position.x = -2;
+    this.giuliaMesh.castShadow = true;
+    this.giuliaMesh.receiveShadow = true;
+    this.giuliaMesh.children.forEach((element) => {
+      element.receiveShadow = true;
+      element.castShadow = true;
+    });
+    this.giuliaMixer = new THREE.AnimationMixer(this.giuliaMesh); // Unique mixer for Giulia
+    this.giuliaClip = this.giulia.animations[1];
+    this.giuliaAction = this.giuliaMixer.clipAction(this.giuliaClip);
+    this.giuliaAction.play();
+    this.scenario.add(this.giuliaMesh);
+
+    // Vitor
+    this.vitor = this.models.vitor;
+    this.vitorMesh = this.vitor.scene.children[0];
+    this.vitorMesh.position.y = -2;
+    this.vitorMesh.position.x = 2;
+    this.vitorMesh.receiveShadow = true;
+    this.vitorMesh.children.forEach((element) => {
+      element.receiveShadow = true;
+      element.castShadow = true;
+    });
+    this.vitorMixer = new THREE.AnimationMixer(this.vitorMesh); // Unique mixer for Vitor
+    this.vitorClip = this.vitor.animations[2];
+    this.vitorAction = this.vitorMixer.clipAction(this.vitorClip);
+    this.vitorAction.play();
     this.scenario.add(this.vitorMesh);
   }
 
@@ -203,7 +245,7 @@ export default class Output {
         x: 0,
         y: -1,
         z: 7,
-        delay: 1,
+        delay: 2,
         duration: 2,
       }
     );
@@ -219,7 +261,7 @@ export default class Output {
         x: 0,
         y: 0,
         z: 0,
-        delay: 3,
+        delay: 4,
         duration: 1,
       }
     );
@@ -248,7 +290,9 @@ export default class Output {
       //this.camera.lookAt(0, 0, 0);
       this.renderer.render(this.scene, this.camera);
       if (this.controls) this.controls.update();
-      if (this.mixer) this.mixer.update(this.delta);
+      // if (this.mixer) this.mixer.update(this.delta);
+      if (this.giuliaMixer) this.giuliaMixer.update(this.delta);
+      if (this.vitorMixer) this.vitorMixer.update(this.delta);
       if (this.stats) this.stats.end();
     };
     animate();

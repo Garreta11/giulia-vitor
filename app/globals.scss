@@ -62,11 +62,11 @@ button {
 }
 
 .section {
-  &:nth-child(even) {
+  &:nth-child(odd) {
     background-color: var(--black);
     color: var(--white);
   }
-  &:nth-child(odd) {
+  &:nth-child(even) {
     background-color: var(--white);
     color: var(--black);
   }
