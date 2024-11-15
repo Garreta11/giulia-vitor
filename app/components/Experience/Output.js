@@ -31,6 +31,20 @@ export default class Output {
 
     this.resources = new Resources(sources);
 
+    this.moves = [
+      'bellydance',
+      'breakdance',
+      'hokeypokey',
+      'macarena',
+      'maraschino',
+      'samba',
+      'silly',
+      'snake',
+      'swing',
+      'twerk',
+      'wave',
+    ];
+
     this.resources.on('ready', () => {
       this.setLoading(false);
       // this.createStats();
@@ -99,7 +113,7 @@ export default class Output {
       2000
     );
 
-    this.camera.position.y = 10;
+    this.camera.position.y = 0;
     this.camera.position.z = 200;
   }
 
@@ -114,9 +128,6 @@ export default class Output {
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
-
-    // const helper = new THREE.DirectionalLightHelper(dirLight, 1);
-    // this.scene.add(helper);
 
     let d = 50;
     dirLight.shadow.camera.left = -d;
@@ -139,12 +150,12 @@ export default class Output {
     this.cylinder1 = new THREE.Mesh(geometry, material);
     this.cylinder1.receiveShadow = true;
     this.cylinder1.position.x = this.isMobile ? -1 : -2;
-    this.cylinder1.position.y = -2.1;
+    this.cylinder1.position.y = -0.6;
 
     this.cylinder2 = new THREE.Mesh(geometry, material);
     this.cylinder2.receiveShadow = true;
     this.cylinder2.position.x = this.isMobile ? 1 : 2;
-    this.cylinder2.position.y = -2.1;
+    this.cylinder2.position.y = -0.6;
 
     this.scenario = new THREE.Group();
     this.scenario.add(this.cylinder1);
@@ -160,7 +171,7 @@ export default class Output {
     this.giulia = this.models.giulia;
     this.giuliaMesh = this.giulia.scene.children[0];
     this.giuliaMesh.scale.set(0.01, 0.01, 0.01);
-    this.giuliaMesh.position.y = -2;
+    this.giuliaMesh.position.y = -0.5;
     this.giuliaMesh.position.x = this.isMobile ? -1 : -2;
     this.giuliaMesh.castShadow = true;
     this.giuliaMesh.receiveShadow = true;
@@ -177,7 +188,7 @@ export default class Output {
     // Vitor
     this.vitor = this.models.vitor;
     this.vitorMesh = this.vitor.scene.children[0];
-    this.vitorMesh.position.y = -2;
+    this.vitorMesh.position.y = -0.5;
     this.vitorMesh.position.x = this.isMobile ? 1 : 2;
     this.vitorMesh.receiveShadow = true;
     this.vitorMesh.children.forEach((element) => {
@@ -206,9 +217,9 @@ export default class Output {
       },
       {
         x: 0,
-        y: -1,
+        y: 0,
         z: 7,
-        delay: 2,
+        delay: 1,
         duration: 2,
       }
     );
@@ -224,10 +235,52 @@ export default class Output {
         x: 0,
         y: 0,
         z: 0,
-        delay: 4,
+        delay: 3,
         duration: 1,
       }
     );
+  }
+
+  changeDance() {
+    // Ensure `lastGiuliaIndex` and `lastVitorIndex` exist
+    if (this.lastGiuliaIndex === undefined) this.lastGiuliaIndex = -1;
+    if (this.lastVitorIndex === undefined) this.lastVitorIndex = -1;
+
+    // Giulia
+    const previousGiuliaAction = this.giuliaAction; // Save the current action
+    let randomGiuliaIndex;
+
+    // Generate a new index different from the previous one
+    do {
+      randomGiuliaIndex = Math.floor(Math.random() * this.moves.length);
+    } while (randomGiuliaIndex === this.lastGiuliaIndex);
+
+    const newGiuliaDance = this.giulia.animations.find(
+      (move) => move.name === this.moves[randomGiuliaIndex]
+    );
+    this.lastGiuliaIndex = randomGiuliaIndex; // Update last index
+    this.giuliaClip = newGiuliaDance; // New clip
+    this.giuliaAction = this.giuliaMixer.clipAction(this.giuliaClip); // Create new action
+    this.giuliaAction.reset().fadeIn(0.5).play(); // Fade in the new action
+    if (previousGiuliaAction) previousGiuliaAction.fadeOut(0.5); // Fade out the previous action
+
+    // Vitor
+    const previousVitorAction = this.vitorAction; // Save the current action
+    let randomVitorIndex;
+
+    // Generate a new index different from the previous one
+    do {
+      randomVitorIndex = Math.floor(Math.random() * this.moves.length);
+    } while (randomVitorIndex === this.lastVitorIndex);
+
+    const newVitorDance = this.vitor.animations.find(
+      (move) => move.name === this.moves[randomVitorIndex]
+    );
+    this.lastVitorIndex = randomVitorIndex; // Update last index
+    this.vitorClip = newVitorDance; // New clip
+    this.vitorAction = this.vitorMixer.clipAction(this.vitorClip); // Create new action
+    this.vitorAction.reset().fadeIn(0.5).play(); // Fade in the new action
+    if (previousVitorAction) previousVitorAction.fadeOut(0.5); // Fade out the previous action
   }
 
   /**

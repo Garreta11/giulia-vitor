@@ -21,7 +21,7 @@
   }
 
   &__button {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -63,7 +63,7 @@
     perspective: 1000px;
     
     transform: translate3d(0, 0, -1000px);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

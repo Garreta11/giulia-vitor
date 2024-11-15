@@ -18,6 +18,15 @@ const Hero = () => {
           end: 'bottom bottom', // Adjust end point as needed
           scrub: true, // Smooth scrolling effect
         },
+        height: 150, // Fade out effect as an example
+      });
+      gsap.to('#header-wrapper', {
+        scrollTrigger: {
+          trigger: `.${styles.hero}`,
+          start: 'top top', // Adjust start point as needed
+          end: 'bottom bottom', // Adjust end point as needed
+          scrub: true, // Smooth scrolling effect
+        },
         width: '100%', // Fade out effect as an example
         top: 0, // Move up slightly as an example
         y: 0,
@@ -37,7 +46,6 @@ const Hero = () => {
             end: 'bottom bottom', // Adjust end point as needed
             scrub: true, // Smooth scrolling effect
           },
-          stagger: true,
           width: 224,
         }
       );

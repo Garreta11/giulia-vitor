@@ -10,7 +10,7 @@ const Header = () => {
     <>
       {start && (
         <div className={styles.header} id='header'>
-          <div className={styles.header__wrapper}>
+          <div className={styles.header__wrapper} id='header-wrapper'>
             <svg
               class='header-svg'
               width='224'

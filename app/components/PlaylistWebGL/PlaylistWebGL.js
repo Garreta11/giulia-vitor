@@ -232,6 +232,7 @@ const PlaylistWebGL = () => {
               className={`${styles.playlist__list} list`}
               onMouseEnter={() => setShowList(true)}
               onMouseLeave={() => setShowList(false)}
+              onClick={() => setShowList((prev) => !prev)}
               data-song={selectedSong}
               data-lenis-prevent
             >

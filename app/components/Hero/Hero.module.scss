@@ -1,9 +1,14 @@
+@import '../../_breakpoints.scss';
+
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 200vh;
+  @include mobile-query {
+    height: 150vh;
+  }
 
   &__image {
     filter: grayscale(1);

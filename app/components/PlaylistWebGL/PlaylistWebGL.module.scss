@@ -38,6 +38,8 @@
     align-items: center;
     @include mobile-query {
       display: block;
+      height: fit-content;
+      min-height: 50vh;
     }
   }
 
@@ -47,6 +49,7 @@
     pointer-events: none;
     @include mobile-query {
       width: 100%;
+      min-height: 50vh;
     }
     canvas {
       width: 100%;
