@@ -33,12 +33,11 @@ const Home = () => {
       <PageWrapper>
         <Header />
         <Loader loading={loading} />
-        <DynamicExperience handleLoading={handleLoading} />
         <Hero />
-        {/* <Photos /> */}
-        <Gallery />
-        <DynamicPlaylistWebGL />
+        <DynamicExperience handleLoading={handleLoading} />
         <Information />
+        <DynamicPlaylistWebGL />
+        <Gallery />
         <Footer />
       </PageWrapper>
     </div>

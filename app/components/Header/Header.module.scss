@@ -2,15 +2,13 @@
 
 .header {
   position: fixed;
-  width: 60%;
+  width: 50%;
   mix-blend-mode: difference;
   z-index: 100;
   pointer-events: none;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  animation: headerAnimation 1s ease-in-out 1 forwards;
-  animation-delay: 2s;
 
   &__wrapper {
     display: flex;
@@ -39,10 +37,10 @@
     }
 
     svg {
-      animation: svgAnimation 1s ease-in-out 1 forwards;
+      //animation: svgAnimation 1s ease-in-out 1 forwards;
       animation-delay: 2s;
       margin-top: 10px;
-      width: 500px;
+      width: 600px;
       height: auto;
       path {
         fill: transparent;

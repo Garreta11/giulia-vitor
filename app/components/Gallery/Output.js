@@ -130,10 +130,10 @@ export default class Output {
 
     if (this.scroll.current > this.scroll.last) {
       this.direction = 'down';
-      this.speed = 5;
+      this.speed = 2;
     } else if (this.scroll.current < this.scroll.last) {
       this.direction = 'up';
-      this.speed = -5;
+      this.speed = -2;
     }
 
     if (this.medias) {

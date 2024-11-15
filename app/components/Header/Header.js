@@ -9,9 +9,10 @@ const Header = () => {
   return (
     <>
       {start && (
-        <div className={styles.header}>
+        <div className={styles.header} id='header'>
           <div className={styles.header__wrapper}>
             <svg
+              class='header-svg'
               width='224'
               height='144'
               viewBox='0 0 224 144'
@@ -29,9 +30,10 @@ const Header = () => {
               <p>Goiânia, Brasil</p>
             </div>
             <svg
-              width='212'
+              class='header-svg'
+              width='224'
               height='144'
-              viewBox='0 0 212 144'
+              viewBox='0 0 224 144'
               fill='none'
               xmlns='http://www.w3.org/2000/svg'
             >
