@@ -53,7 +53,7 @@ export default class Output {
       this.createHDRI();
       this.createCamera();
       this.createLights();
-      this.createOrbitControls();
+      // this.createOrbitControls();
       this.createScenario();
       this.createModels();
       // this.createGUI();
