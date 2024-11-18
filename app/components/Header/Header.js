@@ -12,7 +12,7 @@ const Header = () => {
         <div className={styles.header} id='header'>
           <div className={styles.header__wrapper} id='header-wrapper'>
             <svg
-              class='header-svg'
+              className='header-svg'
               width='224'
               height='144'
               viewBox='0 0 224 144'
@@ -30,7 +30,7 @@ const Header = () => {
               <p>Goiânia, Brasil</p>
             </div>
             <svg
-              class='header-svg'
+              className='header-svg'
               width='224'
               height='144'
               viewBox='0 0 224 144'

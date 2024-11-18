@@ -95,7 +95,7 @@ const Loader = ({ loading }) => {
         <p>The party you have been waiting for is finally here</p>
       </div>
       <div ref={buttonRef} className={styles.loader__button}>
-        <button onClick={handleClick}>Enter</button>
+        <button onClick={handleClick}>Explore</button>
       </div>
     </div>
   );

@@ -1,7 +1,31 @@
+@import '../../_breakpoints.scss';
+
 .information {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  // min-height: 100vh;
+  &__location {
+    padding-top: 100px;
+    &__title {
+      text-align: center;
+      font-size: 100px;
+      @include mobile-query {
+        font-size: 80px;
+      }
+    }
+    &__gallery {
+      &__wrapper {
+        // height: 100vh;
+        width: fit-content;
+        display: flex;
+        flex-wrap: nowrap;
+
+        img {
+          width: 50vw;
+          min-width: 25em;
+          height: calc(100vh - 200px);
+          object-fit: cover;
+          padding: 0;
+        }
+      }
+    }
+  }
 }
