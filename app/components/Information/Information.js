@@ -4,6 +4,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { useEffect, useRef, useContext } from 'react';
 import { DataContext } from '@/app/context/context';
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,7 @@ const photos = [
 ];
 
 const Information = () => {
+  const t = useTranslations('Information');
   const galleryRef = useRef();
   const galleryWrapperRef = useRef();
 
@@ -69,7 +71,7 @@ const Information = () => {
   return (
     <div id='information' className={`${styles.information} section`}>
       <div ref={galleryRef} className={styles.information__location}>
-        <h2 className={styles.information__location__title}>LOCATION</h2>
+        <h2 className={styles.information__location__title}>{t('location')}</h2>
 
         <div className={styles.information__location__gallery}>
           <div

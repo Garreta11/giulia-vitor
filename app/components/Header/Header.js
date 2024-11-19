@@ -1,10 +1,12 @@
 'use client';
 import React, { useContext } from 'react';
 import { DataContext } from '@/app/context/context';
+import { useTranslations } from 'next-intl';
 
 import styles from './Header.module.scss';
 
 const Header = () => {
+  const t = useTranslations('Header');
   const { start } = useContext(DataContext);
   return (
     <>
@@ -26,8 +28,8 @@ const Header = () => {
             </svg>
 
             <div className={styles.header__info}>
-              <p>2nd August 2025</p>
-              <p>Goiânia, Brasil</p>
+              <p>{t('date')}</p>
+              <p>{t('place')}</p>
             </div>
             <svg
               className='header-svg'

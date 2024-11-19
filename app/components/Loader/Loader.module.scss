@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   z-index: 200;
-  font-family: "Humane";
+  font-family: 'Humane';
   font-size: 50px;
 
   &__hidden {
@@ -36,8 +36,7 @@
     }
   }
 
-
-  &__names  {
+  &__names {
     transform-style: preserve-3d;
     perspective: 1000px;
     display: flex;
@@ -45,7 +44,7 @@
     @include mobile-query {
       gap: 10px;
     }
-    
+
     h1 {
       font-size: 300px;
       text-transform: uppercase;
@@ -61,7 +60,7 @@
   &__text {
     transform-style: preserve-3d;
     perspective: 1000px;
-    
+
     transform: translate3d(0, 0, -1000px);
     position: fixed;
     top: 0;
@@ -79,6 +78,23 @@
       transform: scale(0);
       width: 50%;
       text-align: center;
+    }
+  }
+
+  &__languages {
+    display: flex;
+    gap: 10px;
+    font-size: medium;
+    z-index: 100;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    p {
+      cursor: pointer;
+      transform: scale(0);
+      &:hover {
+        font-style: italic;
+      }
     }
   }
 }

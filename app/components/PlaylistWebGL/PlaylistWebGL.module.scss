@@ -18,6 +18,7 @@
 
   &__title {
     font-size: 100px;
+    text-transform: uppercase;
     @include mobile-query {
       font-size: 80px;
     }

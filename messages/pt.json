@@ -1,0 +1,20 @@
+{
+  "Loader": {
+    "text": "A festa que você estava esperando finalmente chegou",
+    "explore": "Explorar"
+  },
+  "Header": {
+    "date": "2 de agosto de 2025",
+    "place": "Goiânia, Brasil"
+  },
+  "Avatars": {
+    "button": "Faça-os dançar"
+  },
+  "Information": {
+    "location": "Localização"
+  },
+  "Playlist": {
+    "title": "Lista de reprodução",
+    "text": "Aproveite a playlist que sua família e amigos selecionaram especialmente para você"
+  }
+}

@@ -3,12 +3,14 @@ import React, { useEffect, useRef, useState, useContext } from 'react';
 import styles from './Experience.module.scss';
 import Output from './Output';
 import { DataContext } from '@/app/context/context';
+import { useTranslations } from 'next-intl';
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const Experience = ({ handleLoading }) => {
+  const t = useTranslations('Avatars');
   const [loading, setLoading] = useState(true);
   const containerRef = useRef(null);
   const outputRef = useRef(null);
@@ -66,7 +68,7 @@ const Experience = ({ handleLoading }) => {
   return (
     <>
       <div ref={containerRef} className={`${styles.experience}`}>
-        <button onClick={handleDance}>Make them dance</button>
+        <button onClick={handleDance}>{t('button')}</button>
       </div>
     </>
   );

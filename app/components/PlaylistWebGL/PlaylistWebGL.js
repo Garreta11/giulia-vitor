@@ -2,6 +2,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { getPlaylist } from '@/app/utils/spotify';
 
+import { useTranslations } from 'next-intl';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,6 +14,8 @@ import Output from './Output';
 gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
 
 const PlaylistWebGL = () => {
+  const t = useTranslations('Playlist');
+
   const canvasRef = useRef(null);
   const outputRef = useRef();
   const speedRef = useRef(0);
@@ -187,10 +191,8 @@ const PlaylistWebGL = () => {
   return (
     <div id='playlist' className={`${styles.playlist} section`}>
       <div className={styles.playlist__header}>
-        <h2 className={styles.playlist__title}>PLAYLIST</h2>
-        <p className={styles.playlist__description}>
-          Enjoy the playlist your family & friends specially curated for you
-        </p>
+        <h2 className={styles.playlist__title}>{t('title')}</h2>
+        <p className={styles.playlist__description}>{t('text')}</p>
       </div>
 
       <div id='wrap' className={styles.playlist__wrap}>

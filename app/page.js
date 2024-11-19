@@ -7,7 +7,6 @@ import Footer from './components/Footer/Footer';
 
 import Information from './components/Information/Information';
 import Hero from './components/Hero/Hero';
-import Photos from './components/Photos/Photos';
 import Gallery from './components/Gallery/Gallery';
 import styles from './page.module.scss';
 import PageWrapper from './components/PageWrapper/PageWrapper';

@@ -1,4 +1,8 @@
 import './globals.scss';
+
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
+
 import PageWrapper from './components/PageWrapper/PageWrapper';
 
 export const metadata = {
@@ -6,11 +10,19 @@ export const metadata = {
   description: "Website to celebrate Giulia and Vitor's wedding",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const locale = await getLocale();
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
     <html lang='en'>
       <body>
-        <PageWrapper>{children}</PageWrapper>
+        <NextIntlClientProvider messages={messages}>
+          <PageWrapper>{children}</PageWrapper>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

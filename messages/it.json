@@ -1,0 +1,20 @@
+{
+  "Loader": {
+    "text": "La festa che aspettavi è finalmente arrivata",
+    "explore": "Esplorare"
+  },
+  "Header": {
+    "date": "2 agosto 2025",
+    "place": "Goiânia, Brasil"
+  },
+  "Avatars": {
+    "button": "Fateli ballare"
+  },
+  "Information": {
+    "location": "Posizione"
+  },
+  "Playlist": {
+    "title": "Elenco di riproduzione",
+    "text": "Goditi la playlist che la tua famiglia e i tuoi amici hanno creato appositamente per te"
+  }
+}
