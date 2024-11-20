@@ -10,34 +10,70 @@ gsap.registerPlugin(ScrollTrigger);
 
 const photos = [
   {
-    img: '/images/location/location1.jpg',
-    alt: 'Photo 1',
-    width: 612,
-    height: 407,
+    img: '/images/location/locationa1.jpg',
+    alt: 'Location - Photo 1',
+    width: 3024,
+    height: 4032,
   },
   {
-    img: '/images/location/location2.jpg',
-    alt: 'Photo 2',
-    width: 1100,
-    height: 1616,
+    img: '/images/location/locationa2.jpg',
+    alt: 'Location - Photo 2',
+    width: 3024,
+    height: 4032,
   },
   {
-    img: '/images/location/location3.jpeg',
-    alt: 'Photo 4',
-    width: 1000,
-    height: 750,
+    img: '/images/location/locationa3.jpg',
+    alt: 'Location - Photo 3',
+    width: 3024,
+    height: 4032,
   },
   {
-    img: '/images/location/location4.jpeg',
-    alt: 'Photo 3',
-    width: 275,
-    height: 183,
+    img: '/images/location/locationa4.jpg',
+    alt: 'Location - Photo 4',
+    width: 3024,
+    height: 4032,
   },
   {
-    img: '/images/location/location5.jpg',
-    alt: 'Photo 5',
-    width: 5184,
-    height: 3456,
+    img: '/images/location/locationa5.jpg',
+    alt: 'Location - Photo 5',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/location/locationa6.jpg',
+    alt: 'Location - Photo 6',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/location/locationa7.jpg',
+    alt: 'Location - Photo 7',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/location/locationa8.jpg',
+    alt: 'Location - Photo 8',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/location/locationa9.jpg',
+    alt: 'Location - Photo 9',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/location/locationa10.jpg',
+    alt: 'Location - Photo 10',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/location/locationa11.jpg',
+    alt: 'Location - Photo 11',
+    width: 717,
+    height: 956,
   },
 ];
 
@@ -68,6 +104,10 @@ const Information = () => {
     }
   }, [start]);
 
+  const handleGoogleForm = () => {
+    console.log('*Go to Google Form');
+  };
+
   return (
     <div id='information' className={`${styles.information} section`}>
       <div ref={galleryRef} className={styles.information__location}>
@@ -92,7 +132,9 @@ const Information = () => {
           </div>
         </div>
       </div>
-      <a href='#'>RSVP</a>
+      <div className={styles.information__rsvp}>
+        <button onClick={handleGoogleForm}>RSVP</button>
+      </div>
     </div>
   );
 };

@@ -26,7 +26,12 @@ body {
   font-family: 'Fogtwo', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Humane', sans-serif;
 }
 
@@ -47,8 +52,13 @@ button {
   -webkit-text-stroke-color: var(--white);
   font-size: 80px;
   letter-spacing: 2px;
+  transition: all ease 0.3s;
+  transform-origin: center center;
   @include mobile-query {
     font-size: 50px;
+  }
+  &:active {
+    scale: 0.9;
   }
   &:hover {
     -webkit-text-stroke-width: 0px;
