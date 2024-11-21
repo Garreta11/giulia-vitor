@@ -9,6 +9,8 @@ const Hero = () => {
   const { start } = useContext(DataContext);
   const imgRef = useRef();
   useEffect(() => {
+    // Scroll to the top of the page when the component is loaded
+    window.scrollTo(0, 0);
     if (start) {
       // Header
       gsap.to('#header', {
@@ -64,6 +66,7 @@ const Hero = () => {
             scrub: true, // Smooth scrolling effect
           },
           width: '100%',
+          height: '100%',
         }
       );
     }

@@ -11,7 +11,25 @@
     "button": "Make them dance"
   },
   "Information": {
-    "location": "Location"
+    "location": "Location",
+    "directions": "Get Directions"
+  },
+  "Rsvp": {
+    "text": "Please submit your RSVP before June 30th to allow for accurate head count for food & dinner"
+  },
+  "FAQ": {
+    "question1": {
+      "question": "What is the dress code?",
+      "answer": "All are welcome to wear whatever they feel most comfortable in, Zane says, “no Crocs.” However, guests are strongly encouraged to wear cocktail attire."
+    },
+    "question2": {
+      "question": "Are children invited?",
+      "answer": "While we love little ones, unfortunately we are only able to accommodate the children in the wedding party at our celebration."
+    },
+    "question3": {
+      "question": "What is the dress code?",
+      "answer": "All are welcome to wear whatever they feel most comfortable in, Zane says, “no Crocs.” However, guests are strongly encouraged to wear cocktail attire."
+    }
   },
   "Playlist": {
     "title": "Playlist",

@@ -4,6 +4,10 @@
   // min-height: 100vh;
   &__location {
     padding-top: 100px;
+    @include mobile-query {
+      padding: 80px 0px;
+      padding-top: 150px;
+    }
     &__title {
       text-align: center;
       font-size: 100px;
@@ -22,17 +26,42 @@
         img {
           width: 50vw;
           min-width: 25em;
-          height: calc(100vh - 200px);
+          // height: calc(100vh - 200px);
+          height: 60vh;
           object-fit: cover;
-          padding: 0;
+          padding-right: 30px;
+          &:last-child {
+            padding-right: 0px;
+          }
         }
       }
     }
-  }
+    &__direction {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 50px 0px;
+      font-size: 30px;
+      @include mobile-query {
+        padding: 20px 0px;
+        font-size: 20px;
+      }
 
-  &__rsvp {
-    width: 100%;
-    text-align: center;
-    padding: 50px 0px;
+      a {
+        border-radius: 50px;
+        padding: 10px 20px;
+        background-color: var(--white);
+        color: var(--black);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        &:hover {
+          gap: 20px;
+        }
+      }
+    }
   }
 }

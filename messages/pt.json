@@ -11,7 +11,25 @@
     "button": "Faça-os dançar"
   },
   "Information": {
-    "location": "Localização"
+    "location": "Localização",
+    "directions": "Obter direções"
+  },
+  "Rsvp": {
+    "text": "Por favor, envie sua confirmação de presença antes de 30 de junho para permitir uma contagem precisa de pessoas para alimentação e jantar."
+  },
+  "FAQ": {
+    "question1": {
+      "question": "Qual é o código de vestimenta?",
+      "answer": "Todos são bem-vindos para usar o que for mais confortável, diz Zane, 'nada de Crocs'. No entanto, os convidados são fortemente encorajados a usar trajes de coquetel."
+    },
+    "question2": {
+      "question": "As crianças são convidadas?",
+      "answer": "Embora amemos os pequenos, infelizmente só conseguimos acomodar as crianças na festa de casamento na nossa celebração."
+    },
+    "question3": {
+      "question": "Qual é o código de vestimenta?",
+      "answer": "Todos são bem-vindos para usar o que for mais confortável, diz Zane, 'nada de Crocs'. No entanto, os convidados são fortemente encorajados a usar trajes de coquetel."
+    }
   },
   "Playlist": {
     "title": "Lista de reprodução",

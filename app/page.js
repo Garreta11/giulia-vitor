@@ -11,6 +11,8 @@ import Gallery from './components/Gallery/Gallery';
 import styles from './page.module.scss';
 import PageWrapper from './components/PageWrapper/PageWrapper';
 import Loader from './components/Loader/Loader';
+import RSVP from './components/RSVP/RSVP';
+import FAQ from './components/FAQ/FAQ';
 
 const DynamicPlaylistWebGL = dynamic(
   () => import('./components/PlaylistWebGL/PlaylistWebGL'),
@@ -35,6 +37,8 @@ const Home = () => {
         <Hero />
         <DynamicExperience handleLoading={handleLoading} />
         <Information />
+        <RSVP />
+        <FAQ />
         <DynamicPlaylistWebGL />
         <Gallery />
         <Footer />

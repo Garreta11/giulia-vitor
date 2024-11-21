@@ -1,0 +1,45 @@
+@import '../../_breakpoints.scss';
+
+.faq {
+  padding: 100px 0px;
+  &__title {
+    text-align: center;
+    font-size: 100px;
+    text-transform: uppercase;
+    @include mobile-query {
+      font-size: 80px;
+    }
+  }
+
+  &__wrapper {
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--white);
+      padding: 30px 20px;
+
+      @include mobile-query {
+        flex-direction: column;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid var(--white);
+      }
+
+      &__question {
+        font-size: 50px;
+        min-width: 30%;
+        font-weight: 400;
+      }
+
+      &__answer {
+        font-size: 25px;
+        @include mobile-query {
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

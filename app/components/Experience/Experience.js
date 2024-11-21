@@ -67,8 +67,10 @@ const Experience = ({ handleLoading }) => {
 
   return (
     <>
-      <div ref={containerRef} className={`${styles.experience}`}>
-        <button onClick={handleDance}>{t('button')}</button>
+      <div ref={containerRef} className={`${styles.experience} section`}>
+        <p className={styles.experience__btn} onClick={handleDance}>
+          {t('button')}
+        </p>
       </div>
     </>
   );

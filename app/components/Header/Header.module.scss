@@ -44,12 +44,13 @@
         width: 100px;
       }
       path {
+        opacity: 0;
         fill: transparent;
         stroke: var(--white);
         stroke-dasharray: 590;
         stroke-dashoffset: 590;
         animation: textAnimation 1s ease-in-out 1 forwards;
-        animation-delay: 1s;
+        animation-delay: 2s;
       }
     }
   }
@@ -57,6 +58,8 @@
   &__info {
     padding-top: 10px;
     text-align: center;
+    animation: infoAnimation 1s ease-in-out 1 forwards;
+    animation-delay: 1s;
   }
 }
 
@@ -86,12 +89,27 @@
 @keyframes textAnimation {
   0% {
     stroke-dashoffset: 590;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
   }
   80% {
+    opacity: 1;
     fill: transparent;
   }
   100% {
+    opacity: 1;
     fill: var(--white);
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes infoAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

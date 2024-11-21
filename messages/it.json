@@ -11,7 +11,25 @@
     "button": "Fateli ballare"
   },
   "Information": {
-    "location": "Posizione"
+    "location": "Posizione",
+    "directions": "Ottieni indicazioni stradali"
+  },
+  "Rsvp": {
+    "text": "Si prega di inviare la propria risposta prima del 30 giugno per consentire un conteggio accurato delle persone per il cibo e la cena"
+  },
+  "FAQ": {
+    "question1": {
+      "question": "Qual è il dress code?",
+      "answer": "Tutti sono benvenuti a indossare ciò in cui si sentono più a loro agio, dice Zane, 'niente Crocs'. Tuttavia, gli ospiti sono fortemente incoraggiati a indossare abiti da cocktail."
+    },
+    "question2": {
+      "question": "I bambini sono invitati?",
+      "answer": "Anche se amiamo i più piccoli, purtroppo alla nostra festa possiamo ospitare solo i bambini che partecipano al ricevimento nuziale."
+    },
+    "question3": {
+      "question": "What is the dress code?",
+      "answer": "Tutti sono benvenuti a indossare ciò in cui si sentono più a loro agio, dice Zane, 'niente Crocs'. Tuttavia, gli ospiti sono fortemente incoraggiati a indossare abiti da cocktail."
+    }
   },
   "Playlist": {
     "title": "Elenco di riproduzione",

@@ -124,8 +124,8 @@ const Loader = ({ loading }) => {
     setStart(true);
     gsap.to(buttonRef.current.querySelector('button'), {
       z: 1000,
+      opacity: 0,
       duration: 1,
-      stagger: 0.1,
       ease: 'power2.inOut',
       onComplete: () => setIsLoaded(true),
     });
