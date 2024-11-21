@@ -7,7 +7,7 @@ const FAQ = () => {
   const t = useTranslations('FAQ');
 
   return (
-    <div className={`${styles.faq} section`}>
+    <div id='faq' className={`${styles.faq} section`}>
       <h2 className={styles.faq__title}>FAQ</h2>
 
       <div className={styles.faq__wrapper}>

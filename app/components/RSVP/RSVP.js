@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 const RSVP = () => {
   const t = useTranslations('Rsvp');
   return (
-    <div className={`${styles.rsvp} section`}>
+    <div id='rsvp' className={`${styles.rsvp} section`}>
       <div className={styles.rsvp__wrapper}>
         <p>{t('text')}</p>
         <Link href='#'>
