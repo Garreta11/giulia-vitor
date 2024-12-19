@@ -136,7 +136,7 @@ const Information = () => {
         <div className={styles.information__location__direction}>
           <p>Casa Amarela, Goiânia, Brasil</p>
           <Link
-            href='https://maps.app.goo.gl/UuaBY3R5ZBoLwtfX9'
+            href='https://maps.app.goo.gl/dJpMTiNMVsU8BxTr7'
             target='_blank'
           >
             {t('directions')}

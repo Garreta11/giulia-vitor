@@ -8,7 +8,10 @@ const RSVP = () => {
     <div id='rsvp' className={`${styles.rsvp} section`}>
       <div className={styles.rsvp__wrapper}>
         <p>{t('text')}</p>
-        <Link href='#'>
+        <Link
+          href='https://docs.google.com/forms/d/e/1FAIpQLSf4z-8qDh2mgbhMoEl3Iaf5gZxTtpRl9sY-kLvq3DmqeEA-qA/viewform'
+          target='_blank'
+        >
           RSVP
           <svg
             width='14'
