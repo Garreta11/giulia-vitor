@@ -61,7 +61,11 @@ const Footer = () => {
               ))}
             </div>
 
-            <Link className={styles.footer__links__rsvp} href='#'>
+            <Link
+              className={styles.footer__links__rsvp}
+              href='https://docs.google.com/forms/d/e/1FAIpQLSf4z-8qDh2mgbhMoEl3Iaf5gZxTtpRl9sY-kLvq3DmqeEA-qA/viewform'
+              target='_blank'
+            >
               RSVP
               <svg
                 width='14'
