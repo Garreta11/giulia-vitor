@@ -22,32 +22,6 @@ export const getAccessToken = async () => {
   return response.json();
 };
 
-/* export const getPlaylist = async () => {
-  const { access_token } = await getAccessToken();
-  //const url = 'https://api.spotify.com/v1/playlists/5OAdJaEhIju8OYKCSNRDD4';
-  const url = 'https://api.spotify.com/v1/playlists/1RAjDfseAWWrIRWrSXChFe';
-
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    console.log(result);
-    return result; // Return the result instead of just logging it
-  } catch (error) {
-    console.error('Error fetching Spotify playlist:', error);
-    return null; // Return null if there's an error
-  }
-}; */
-
 export const getPlaylist = async () => {
   const { access_token } = await getAccessToken();
   // const url = 'https://api.spotify.com/v1/playlists/1RAjDfseAWWrIRWrSXChFe/tracks';

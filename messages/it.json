@@ -15,7 +15,8 @@
     "directions": "Ottieni indicazioni stradali"
   },
   "Rsvp": {
-    "text": "Ti preghiamo di farci sapere se potrai unirti a noi cliccando sul pulsante RSVP qui a fianco e compilando il modulo entro il 15 febbraio 2025."
+    "text": "Ti preghiamo di farci sapere se potrai unirti a noi cliccando sul pulsante RSVP qui a fianco e compilando il modulo entro il 15 febbraio 2025.",
+    "link": "https://docs.google.com/forms/d/e/1FAIpQLSdxggIYP0TDwcpdwW_lonL05pbM_r82JYkUZRhFLonGCx-SHg/viewform"
   },
   "FAQ": {
     "question1": {

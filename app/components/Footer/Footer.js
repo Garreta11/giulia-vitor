@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import Link from 'next/link';
 import { useLenis } from 'lenis/react';
+import { useTranslations } from 'next-intl';
 
 const links = [
   {
@@ -17,6 +18,8 @@ const links = [
 ];
 
 const Footer = () => {
+  const t = useTranslations('Rsvp');
+
   const lenis = useLenis();
 
   const scrollToOptions = {
@@ -63,7 +66,7 @@ const Footer = () => {
 
             <Link
               className={styles.footer__links__rsvp}
-              href='https://docs.google.com/forms/d/e/1FAIpQLSf4z-8qDh2mgbhMoEl3Iaf5gZxTtpRl9sY-kLvq3DmqeEA-qA/viewform'
+              href={t('link')}
               target='_blank'
             >
               RSVP

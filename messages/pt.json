@@ -15,7 +15,8 @@
     "directions": "Obter direções"
   },
   "Rsvp": {
-    "text": "Por favor, confirme sua presença clicando no botão RSVP aqui ao lado e preenchendo o formulário até o dia 15 de fevereiro de 2025."
+    "text": "Por favor, confirme sua presença clicando no botão RSVP aqui ao lado e preenchendo o formulário até o dia 15 de fevereiro de 2025.",
+    "link": "https://docs.google.com/forms/d/e/1FAIpQLSdsFtrhBSggGHcn7FK1mhVaiUyQZOWTr_IUfg5PPKISXqelUg/viewform"
   },
   "FAQ": {
     "question1": {
