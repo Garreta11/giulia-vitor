@@ -21,7 +21,7 @@
       height: fit-content;
     }
   }
-  
+
   &__figure {
     position: absolute;
 
@@ -33,59 +33,87 @@
       width: 100vw !important;
       height: fit-content !important;
     }
- 
+
     &:nth-child(1) {
       width: 3629px;
       height: 2433px;
     }
-  
+
     &:nth-child(2) {
       left: 50rem;
       top: 10rem;
       width: 1200px;
       height: 1600px;
     }
-  
+
     &:nth-child(3) {
       left: 15rem;
       top: 60rem;
       width: 603px;
       height: 768px;
     }
-  
+
     &:nth-child(4) {
       right: 0;
       top: 35rem;
       width: 1280px;
       height: 960px;
     }
-  
+
     &:nth-child(5) {
       left: 45rem;
       top: 55rem;
       width: 1024px;
       height: 768px;
     }
-  
+
     &:nth-child(6) {
       left: 50rem;
       top: 90rem;
       width: 2048px;
       height: 1536px;
     }
-  
+
     &:nth-child(7) {
       left: 80rem;
       top: 110rem;
       width: 2048px;
       height: 1536px;
     }
-  
+
     &:nth-child(8) {
       left: 85rem;
       top: 60rem;
       width: 1202px;
       height: 1600px;
+    }
+
+    &:nth-child(9) {
+      left: 8rem;
+      top: 30rem;
+      width: calc(4032px / 2);
+      height: calc(3024px / 2);
+    }
+
+    &:nth-child(10) {
+      left: 15rem;
+      top: 90rem;
+      width: calc(3024px / 2);
+      height: calc(4032px / 2);
+    }
+
+    &:nth-child(11) {
+      left: 35rem;
+      top: 120rem;
+      width: calc(3024px / 2);
+      height: calc(4032px / 2);
+    }
+
+    &:nth-child(12) {
+      left: 80rem;
+      top: 0rem;
+      width: 2316px;
+      height: 3088px;
     }
   }
 
@@ -121,7 +149,14 @@
   &__gradient {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(0deg, rgba(23,23,23,1) 0%, rgba(23,23,23,0.18) 5%, rgba(23,23,23,0) 50%, rgba(23,23,23,0.18) 95%, rgba(23,23,23,1) 100%);
+    background: linear-gradient(
+      0deg,
+      rgba(23, 23, 23, 1) 0%,
+      rgba(23, 23, 23, 0.18) 5%,
+      rgba(23, 23, 23, 0) 50%,
+      rgba(23, 23, 23, 0.18) 95%,
+      rgba(23, 23, 23, 1) 100%
+    );
     position: absolute;
     top: 0;
 
@@ -129,5 +164,4 @@
       display: none;
     }
   }
-
 }

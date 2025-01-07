@@ -51,6 +51,30 @@ const photos = [
     width: 1202,
     height: 1600,
   },
+  {
+    img: '/images/photos/photo9.jpg',
+    alt: 'Photo 9',
+    width: 4032,
+    height: 3024,
+  },
+  {
+    img: '/images/photos/photo10.jpg',
+    alt: 'Photo 10',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/photos/photo11.jpg',
+    alt: 'Photo 11',
+    width: 3024,
+    height: 4032,
+  },
+  {
+    img: '/images/photos/photo12.jpg',
+    alt: 'Photo 12',
+    width: 2316,
+    height: 3088,
+  },
 ];
 
 const Gallery = () => {

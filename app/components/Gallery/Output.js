@@ -39,7 +39,7 @@ export default class Output {
       last: 0,
     };
 
-    this.speed = 2;
+    this.speed = 5;
 
     // create camera
     this.camera = new THREE.PerspectiveCamera(
