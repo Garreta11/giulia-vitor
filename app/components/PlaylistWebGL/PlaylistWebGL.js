@@ -182,11 +182,15 @@ const PlaylistWebGL = () => {
     }
   };
 
-  const handleClick = (url, index) => {
+  const handleClick = (song, index) => {
+    const id = song.track.id;
+    const url = song.track.preview_url;
     setShowList(false);
     setSelectedSong(index);
-    audioRef.current.src = url;
-    audioRef.current.play();
+    if (url !== null) {
+      audioRef.current.src = url;
+      audioRef.current.play();
+    }
   };
 
   return (
@@ -308,9 +312,9 @@ const PlaylistWebGL = () => {
                         key={index}
                         className={`${styles.playlist__list__item} item`}
                         data-nav={index}
-                        onClick={() =>
-                          handleClick(song.track.preview_url, index)
-                        }
+                        onClick={() => {
+                          handleClick(song, index);
+                        }}
                       >
                         <p className={styles.playlist__list__item__song}>
                           {song.track.name}

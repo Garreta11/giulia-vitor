@@ -7,7 +7,7 @@ import PageWrapper from './components/PageWrapper/PageWrapper';
 
 export const metadata = {
   title: 'Giulia & Vitor',
-  description: "Website to celebrate Giulia and Vitor's wedding",
+  description: "Invite to Giulia and Vitor's wedding in Brazil",
 };
 
 export default async function RootLayout({ children }) {
